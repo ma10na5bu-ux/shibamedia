@@ -106,7 +106,21 @@
       "Bash(cd \"/Users/ishiimanabu/Shibamedia株式会社\" && npx skills add vercel-labs/agent-skills --skill web-design-guidelines -a claude-code -y 2>&1)",
       "Bash(cd \"/Users/ishiimanabu/Shibamedia株式会社\" && npx skills add anthropics/skills --skill canvas-design -a claude-code -y 2>&1)",
       "Bash(cd \"/Users/ishiimanabu/Shibamedia株式会社\" && npx skills add anthropics/skills --skill skill-creator -a claude-code -y 2>&1)",
-      "Bash(cd \"/Users/ishiimanabu/Shibamedia株式会社\" && npx skills add obra/superpowers --skill systematic-debugging -a claude-code -y 2>&1)"
+      "Bash(cd \"/Users/ishiimanabu/Shibamedia株式会社\" && npx skills add obra/superpowers --skill systematic-debugging -a claude-code -y 2>&1)",
+      "Bash(cd \"/Users/ishiimanabu/Shibamedia株式会社\" && gh repo rename shibamedia --yes 2>&1)",
+      "mcp__claude_ai_Notion__notion-fetch",
+      "Bash(ls \"/Users/ishiimanabu/Shibamedia株式会社/01_編集部/02_執筆・原稿/\" | grep -v '_画像プロンプト' | grep -v '_NGワードチェック' | grep -v '_v2' | grep -v '^cover-image' | grep -v '^imgs' | grep -v '^illustrations' | grep '\\\\.md$')",
+      "Bash(for f in 2026-03-10_トイレトレーニング.md 2026-03-10_ドッグフード選び.md 2026-03-10_換毛期対策.md 2026-03-10_柴犬あるある.md 2026-03-10_春の柴犬散歩_画像生成指示.md 2026-03-10_春の柴犬散歩.md 2026-03-11_柴犬の可愛さはAIに代替できない.md 2026-03-11_柴犬を飼う前に知っておきたいこと.md 2026-03-12_100均柴犬グッズDIY.md 2026-03-12_Doge文化史.md 2026-03-12_お迎え柴.md 2026-03-12_ガウガウ翻訳機.md 2026-03-12_しつけ失敗しても大丈夫.md 2026-03-12_ドッグラン事情.md 2026-03-12_拒否柴の取扱説明書.md)",
+      "Bash(do echo \"=== $f ===\")",
+      "Read(//Users/ishiimanabu/Shibamedia株式会社/**)",
+      "Bash(done)",
+      "Bash(for f in 2026-03-12_共働き家庭の柴犬ライフ.md 2026-03-12_子犬の最初の1週間.md 2026-03-12_柴距離入門.md 2026-03-12_柴犬おもちゃグッズ.md 2026-03-12_柴犬スマホ撮影テクニック.md 2026-03-12_柴犬と賃貸暮らし.md 2026-03-12_柴犬の夏対策.md 2026-03-12_柴犬の多頭飼いガイド.md 2026-03-12_柴犬の匂いの正体.md 2026-03-12_柴犬は猫である説.md 2026-03-12_食い渋り攻略法.md 2026-03-12_梅雨の柴犬散歩.md)",
+      "mcp__claude_ai_Notion__notion-create-pages",
+      "mcp__claude_ai_Notion__notion-update-data-source",
+      "mcp__claude_ai_Notion__notion-update-page",
+      "mcp__claude_ai_Notion__notion-search",
+      "Bash(python3 -c \"\nfrom PIL import Image\nimg = Image.open\\('/Users/ishiimanabu/Shibamedia株式会社/01_編集部/03_画像・素材/shiba-play-bow_eyecatch.png'\\)\nW, H = img.size\nprint\\(f'元サイズ: {W}x{H}'\\)\ncropped = img.crop\\(\\(0, 0, W - 200, H - 140\\)\\)\nresized = cropped.resize\\(\\(1200, 630\\)\\).convert\\('RGB'\\)\nresized.save\\('/Users/ishiimanabu/Shibamedia株式会社/01_編集部/03_画像・素材/shiba-play-bow_eyecatch.jpg', 'JPEG', quality=90\\)\nprint\\('トリミング完了: shiba-play-bow_eyecatch.jpg'\\)\n\")",
+      "Bash(python3 << 'PYEOF'\nimport urllib.request, json, base64\n\nauth = base64.b64encode\\(b\"shibaadmin:rAEd dhsS RLit FOp2 vyhD uAYF\"\\).decode\\(\\)\nreq = urllib.request.Request\\(\"https://shiba-with.com/wp-json/wp/v2/posts/161\"\\)\nreq.add_header\\(\"Authorization\", f\"Basic {auth}\"\\)\nresp = urllib.request.urlopen\\(req\\)\npost = json.load\\(resp\\)\n\nprint\\(f\"タイトル: {post['title']['rendered']}\"\\)\nprint\\(f\"スラッグ: {post['slug']}\"\\)\nprint\\(f\"カテゴリ: {post['categories']}\"\\)\nprint\\(f\"アイキャッチ: {post['featured_media']}\"\\)\n\n# H2カウント\ncontent = post['content']['rendered']\nh2_count = content.count\\('<h2'\\)\nprint\\(f\"H2数: {h2_count}\"\\)\n\n# 内部リンクチェック\nimport re\nlinks = re.findall\\(r'href=\"\\(https://shiba-with\\\\.com/[^\"]+\\)\"', content\\)\nprint\\(f\"\\\\n内部リンク \\({len\\(links\\)}本\\):\"\\)\nfor link in links:\n    try:\n        r = urllib.request.urlopen\\(link\\)\n        print\\(f\"  {r.status} {link}\"\\)\n    except Exception as e:\n        print\\(f\"  ERROR {link}: {e}\"\\)\nPYEOF)"
     ]
   }
 }
