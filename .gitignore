@@ -1,0 +1,38 @@
+# 環境変数・認証情報（絶対にpushしない）
+.env
+.env.*
+credentials/
+*.pem
+*.key
+
+# 画像ファイル（Google Driveで管理）
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.webp
+*.svg
+*.ico
+
+# Node.js
+node_modules/
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# アーカイブ（旧部署）
+_archive/
+
+# WordPress
+wp-content/
+*.sql
+
+# その他
+*.log
+*.tmp
+.cache/
+
+# 移行指示書（一時ドキュメント）
+柴メディア_GitHub移行_全体指示.md
