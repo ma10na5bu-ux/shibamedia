@@ -57,10 +57,10 @@ Shibamedia株式会社/
 ├── 01_編集部/
 │   ├── 01_記事企画・ネタ帳/      ← アーカイブ用（運用はNotion）
 │   ├── 02_執筆・原稿/
-│   ├── 03_画像・素材/            ← Google Driveで管理（ローカル保存しない）
+│   ├── 03_画像・素材/            ← ローカル保管（GitHubには入れない）
 │   └── 04_編集ガイドライン/
 ├── 02_デザイン部/
-│   ├── 01_アイキャッチ・画像素材/ ← Google Driveで管理（ローカル保存しない）
+│   ├── 01_アイキャッチ・画像素材/ ← ローカル保管（GitHubには入れない）
 │   ├── 02_サイトデザイン・CSS/
 │   └── 03_テンプレート・ガイドライン/
 ├── 03_集客部/
@@ -221,7 +221,7 @@ GA4_CREDENTIALS_PATH=./credentials/ga4-service-account.json
 |---|---|---|
 | コード・設定・記事md | GitHub（privateリポ） | バージョン管理・バックアップ |
 | ネタ帳 | Notion | スマホから即投入・ステータス管理 |
-| 画像（アイキャッチ等） | Google Drive | 大容量対応（2TB） |
+| 画像（アイキャッチ等） | ローカル | GitHubには入れない（.gitignore除外） |
 | 環境変数・認証情報 | ローカル .env のみ | セキュリティ |
 | 公開記事 | WordPress | 本番環境 |
 
@@ -268,7 +268,8 @@ GA4_CREDENTIALS_PATH=./credentials/ga4-service-account.json
 - コード解析・静的テスト・ビルド・Lint等のコマンド実行
 - Bashコマンド全般
 - npm/pip等のパッケージインストール（ローカル環境）
-- Git操作（commit・branch作成・ローカルでのmerge）
+- Git操作（commit・branch作成・ローカルでのmerge・push）
+- **作業完了時は必ず git commit + push を実行し、GitHubを常に最新に保つ**
 
 ### WordPress・コンテンツ
 - WordPress REST APIへの通信（記事の取得・下書き作成・更新・公開記事の更新）
@@ -298,7 +299,7 @@ GA4_CREDENTIALS_PATH=./credentials/ga4-service-account.json
 | **課金が発生する操作全般** | AWS・GCP・有料SaaS等 |
 | **WordPressの設定変更** | テーマ・プラグイン・パーマリンク等、サイト全体への影響 |
 | **サイト全体に影響する一括変更** | 全記事のカテゴリ変更・一括ステータス変更等 |
-| **Git push（リモートへの送信）** | 共有リポジトリへの影響 |
+| ~~Git push~~ | ~~承認必須から除外済み（承認不要で自動実行）~~ |
 | **不可逆な本番環境の操作** | データベース変更・ドメイン設定等 |
 
 ---
