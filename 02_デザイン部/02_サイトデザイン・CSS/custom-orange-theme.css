@@ -1,0 +1,358 @@
+/* ============================================
+   柴犬といっしょ — SWELL カスタムCSS
+
+   適用方法：
+   WordPress管理画面 → 外観 → カスタマイズ → 追加CSS
+   に貼り付けて保存する
+   ============================================ */
+
+/* ============================================
+   1. CSS変数（カラーパレット）
+   ============================================ */
+:root {
+  --shiba-primary: #C84B1A;
+  --shiba-primary-dark: #A03D15;
+  --shiba-primary-light: #FDF0EB;
+  --shiba-accent: #D4A843;
+  --shiba-accent-light: #FFF8EC;
+  --shiba-sub-accent: #5B8C5A;
+  --shiba-bg: #FFFBF7;
+  --shiba-surface: #FFFFFF;
+  --shiba-text: #333333;
+  --shiba-text-light: #666666;
+  --shiba-border: #E5DDD6;
+  --shiba-radius: 8px;
+  --color_main: #C84B1A;
+  --color_main_thin: #FDF0EB;
+  --color_htag: #C84B1A;
+}
+
+/* ============================================
+   2. 全体の背景・テキスト
+   ============================================ */
+body {
+  background-color: var(--shiba-bg);
+  color: var(--shiba-text);
+}
+
+/* ============================================
+   3. ヘッダー
+   ============================================ */
+.l-header {
+  background-color: var(--shiba-surface);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+#site-header {
+  border-bottom: 3px solid var(--shiba-primary);
+}
+
+/* サイトタイトル */
+.c-headLogo__txt,
+.c-headLogo a {
+  color: var(--shiba-primary-dark);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+/* キャッチフレーズ */
+.c-headLogo__desc {
+  color: var(--shiba-text-light);
+  font-size: 0.75rem;
+}
+
+/* グローバルナビ */
+.c-gnav a {
+  color: var(--shiba-text);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.c-gnav a:hover {
+  color: var(--shiba-primary);
+}
+.c-gnav .c-gnav__item.current a {
+  color: var(--shiba-primary);
+  border-bottom: 2px solid var(--shiba-primary);
+}
+
+/* ============================================
+   4. 記事カード（トップページ一覧）
+   ============================================ */
+.p-postList__item, .c-postCard {
+  background-color: var(--shiba-surface);
+  border-radius: var(--shiba-radius);
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.p-postList__item:hover, .c-postCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.13);
+}
+
+/* 記事タイトル（カード内） */
+.p-postList__title {
+  color: var(--shiba-text);
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+/* カテゴリラベル */
+.c-cat-label, .p-cat-label,
+.c-categoryBadge, .c-postThumb__cat {
+  background: var(--shiba-primary) !important;
+  color: #fff !important;
+  border-radius: 3px;
+  font-size: 0.75em;
+  font-weight: bold;
+  padding: 2px 8px;
+}
+
+/* 日付 */
+.p-postList__date {
+  color: var(--shiba-text-light);
+  font-size: 0.8rem;
+}
+
+/* ============================================
+   5. 記事本文
+   ============================================ */
+.post_content {
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+}
+
+.post_content p {
+  margin-bottom: 1.6em;
+}
+
+/* H2 見出し — 左ボーダー＋背景 */
+.post_content h2 {
+  background-color: var(--shiba-primary-light);
+  border-left: 5px solid var(--shiba-primary);
+  padding: 0.8em 1em;
+  margin: 2.5em 0 1.2em;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--shiba-text);
+  border-radius: 0 var(--shiba-radius) var(--shiba-radius) 0;
+}
+
+/* H3 見出し — 下線アクセント */
+.post_content h3 {
+  border-bottom: 3px solid var(--shiba-accent);
+  padding-bottom: 0.4em;
+  margin: 2em 0 1em;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--shiba-text);
+}
+
+/* H4 見出し */
+.post_content h4 {
+  color: var(--shiba-primary-dark);
+  font-weight: 700;
+  margin: 1.5em 0 0.8em;
+}
+
+/* リンク */
+.post_content a {
+  color: var(--shiba-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--shiba-primary-light);
+  text-underline-offset: 3px;
+  transition: color 0.2s, text-decoration-color 0.2s;
+}
+.post_content a:hover {
+  color: var(--shiba-accent);
+  text-decoration-color: var(--shiba-accent);
+}
+
+/* リスト */
+.post_content ul li::marker {
+  color: var(--shiba-primary);
+}
+.post_content ol li::marker {
+  color: var(--shiba-primary);
+  font-weight: 700;
+}
+
+/* ボックス装飾（SWELLのブロック） */
+.swell-block-box {
+  border-radius: var(--shiba-radius);
+}
+
+/* ============================================
+   6. ふきだし
+   ============================================ */
+.swell-block-balloon {
+  margin: 1.5em 0;
+}
+
+/* ============================================
+   7. ボタン（CTA）
+   ============================================ */
+.swell-block-button a,
+.wp-block-button__link {
+  background-color: var(--shiba-primary);
+  color: #fff;
+  border-radius: 30px;
+  font-weight: 700;
+  padding: 0.8em 2em;
+  transition: background-color 0.2s, transform 0.1s;
+  box-shadow: 0 3px 10px rgba(200, 75, 26, 0.3);
+}
+.swell-block-button a:hover,
+.wp-block-button__link:hover {
+  background-color: var(--shiba-primary-dark);
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   8. サイドバー（使う場合）
+   ============================================ */
+.l-sidebar .widget {
+  background-color: var(--shiba-surface);
+  border-radius: var(--shiba-radius);
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.l-sidebar .widget-title {
+  color: var(--shiba-primary-dark);
+  font-weight: 700;
+  border-bottom: 2px solid var(--shiba-primary);
+  padding-bottom: 0.3em;
+  margin-bottom: 1em;
+  font-size: 1rem;
+}
+
+/* ============================================
+   9. フッター
+   ============================================ */
+.l-footer {
+  background-color: var(--shiba-primary-dark);
+  color: rgba(255, 255, 255, 0.85);
+}
+.l-footer a {
+  color: rgba(255, 255, 255, 0.85);
+  transition: color 0.2s;
+}
+.l-footer a:hover {
+  color: var(--shiba-accent);
+}
+.copyright {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.8rem;
+}
+
+/* ============================================
+   10. 目次（SWELL標準）
+   ============================================ */
+.p-toc {
+  background-color: var(--shiba-primary-light);
+  border: none;
+  border-radius: var(--shiba-radius);
+  padding: 1.5rem 2rem;
+}
+.p-toc__ttl {
+  color: var(--shiba-primary-dark);
+  font-weight: 700;
+}
+.p-toc a {
+  color: var(--shiba-text);
+}
+.p-toc a:hover {
+  color: var(--shiba-primary);
+}
+
+/* ============================================
+   11. 関連記事・記事下エリア
+   ============================================ */
+.p-relatedPosts__title {
+  color: var(--shiba-primary-dark);
+  font-weight: 700;
+}
+
+.c-shareBtns {
+  margin: 2.5em 0;
+}
+
+/* ============================================
+   12. モバイル対応
+   ============================================ */
+@media (max-width: 599px) {
+  .post_content h2 {
+    font-size: 1.2rem;
+    padding: 0.6em 0.8em;
+  }
+  .post_content h3 {
+    font-size: 1.1rem;
+  }
+  .post_content {
+    line-height: 1.85;
+  }
+}
+
+/* ============================================
+   13. タグ・カテゴリページ
+   ============================================ */
+.c-tagList a {
+  background-color: var(--shiba-primary-light);
+  color: var(--shiba-primary-dark);
+  border-radius: 20px;
+  padding: 0.3em 0.8em;
+  font-size: 0.8rem;
+  transition: background-color 0.2s;
+}
+.c-tagList a:hover {
+  background-color: var(--shiba-primary);
+  color: #fff;
+}
+
+/* ============================================
+   14. ページネーション
+   ============================================ */
+.c-pagination .page-numbers {
+  border-radius: var(--shiba-radius);
+}
+.c-pagination .page-numbers.current {
+  background-color: var(--shiba-primary);
+  color: #fff;
+}
+
+/* ============================================
+   15. ブログカード（内部リンク）
+   ============================================ */
+.p-blogCard {
+  border: 1px solid var(--shiba-border);
+  border-radius: var(--shiba-radius);
+  transition: box-shadow 0.2s;
+}
+.p-blogCard:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* ============================================
+   16. スクロールバー（Webkit）
+   ============================================ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--shiba-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--shiba-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--shiba-text-light);
+}
+
+/* ============================================
+   17. セレクション（テキスト選択時の色）
+   ============================================ */
+::selection {
+  background-color: var(--shiba-primary-light);
+  color: var(--shiba-text);
+}
