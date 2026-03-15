@@ -177,6 +177,14 @@ body {
   font-weight: 700;
 }
 
+/* テーブル — ヘッダーを控えめに（H2より目立たせない） */
+.post_content table th {
+  background-color: var(--shiba-primary-light) !important;
+  color: var(--shiba-text) !important;
+  font-weight: 700;
+  border-bottom: 2px solid var(--shiba-primary);
+}
+
 /* ボックス装飾（SWELLのブロック） */
 .swell-block-box {
   border-radius: var(--shiba-radius);
