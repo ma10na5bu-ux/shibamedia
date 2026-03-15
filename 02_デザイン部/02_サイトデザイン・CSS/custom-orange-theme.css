@@ -177,12 +177,18 @@ body {
   font-weight: 700;
 }
 
-/* テーブル — ヘッダーを控えめに（H2より目立たせない） */
+/* テーブル — 控えめなスタイル（H2より目立たせない） */
+.post_content table {
+  border-color: var(--shiba-border) !important;
+}
+.post_content table th,
+.post_content table td {
+  border-color: var(--shiba-border) !important;
+}
 .post_content table th {
-  background-color: var(--shiba-primary-light) !important;
+  background-color: #f5f5f5 !important;
   color: var(--shiba-text) !important;
   font-weight: 700;
-  border-bottom: 2px solid var(--shiba-primary);
 }
 
 /* ボックス装飾（SWELLのブロック） */
