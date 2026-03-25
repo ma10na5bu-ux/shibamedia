@@ -81,4 +81,5 @@ category: お散歩・お出かけ
 友人は来年どの穴場スポットを攻めようか、もう考え始めているそうです。桜を見ない赤柴を連れて。
 
 **関連記事：**
-- [柴犬の換毛期対策｜ブラッシング方法と抜け毛の季節の乗り越え方](https://shiba-with.com/shiba-shedding-season/)
+- [柴犬の換毛期対策｜友人のリビングが雪景色になった話](https://shiba-with.com/shiba-shedding-season/)
+- [拒否柴の取扱説明書｜散歩中にテコでも動かない柴犬への正しい対応](https://shiba-with.com/shiba-kyohi-guide/)

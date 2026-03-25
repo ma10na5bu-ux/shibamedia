@@ -3,7 +3,21 @@
 # .envから認証情報を読み込み、curlに渡す
 # 使い方: source wp-auth.sh && curl -u "$WP_AUTH" "https://shiba-with.com/wp-json/wp/v2/posts"
 
-ENV_FILE="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)/.env"
+# プロジェクトルートを特定（BASH_SOURCEが効かない環境向けにフォールバック）
+_SCRIPT_DIR=""
+if [ -n "${BASH_SOURCE[0]:-}" ] && [ -f "${BASH_SOURCE[0]}" ]; then
+  _SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+fi
+
+if [ -n "$_SCRIPT_DIR" ]; then
+  PROJECT_ROOT="$(cd "$_SCRIPT_DIR/../.." && pwd)"
+else
+  # フォールバック: 絶対パスで指定
+  PROJECT_ROOT="/Users/ishiimanabu/Shibamedia株式会社"
+fi
+unset _SCRIPT_DIR
+
+ENV_FILE="$PROJECT_ROOT/.env"
 
 if [ ! -f "$ENV_FILE" ]; then
   echo "ERROR: .env not found at $ENV_FILE" >&2
