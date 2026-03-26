@@ -121,6 +121,67 @@ else
 fi
 echo ""
 
+# 4b. Notionネタ帳「💡 アイデア」一覧
+echo "--- 4b. Notionネタ帳：アイデア一覧（💡 アイデア） ---"
+if [ -n "$NOTION_API_KEY" ]; then
+  NOTION_IDEAS=$(curl -s -X POST \
+    "https://api.notion.com/v1/databases/$NOTION_DB_ID/query" \
+    -H "Authorization: Bearer $NOTION_API_KEY" \
+    -H "Notion-Version: 2022-06-28" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "filter": {
+        "property": "ステータス",
+        "select": {
+          "equals": "💡 アイデア"
+        }
+      },
+      "sorts": [
+        {
+          "property": "追加日",
+          "direction": "descending"
+        }
+      ]
+    }' 2>/dev/null)
+
+  if echo "$NOTION_IDEAS" | python3 -c "import json,sys; d=json.load(sys.stdin); sys.exit(0 if 'results' in d else 1)" 2>/dev/null; then
+    IDEAS_COUNT=$(echo "$NOTION_IDEAS" | python3 -c "import json,sys; d=json.load(sys.stdin); print(len(d.get('results',[])))" 2>/dev/null)
+    echo "💡 アイデア: ${IDEAS_COUNT}件"
+    echo "$NOTION_IDEAS" | python3 -c "
+import json, sys
+try:
+    data = json.load(sys.stdin)
+    results = data.get('results', [])
+    if not results:
+        print('  （💡 アイデアのネタはありません）')
+    else:
+        for i, r in enumerate(results, 1):
+            props = r.get('properties', {})
+            title_arr = props.get('ネタ', {}).get('title', [])
+            title = title_arr[0]['plain_text'] if title_arr else '（無題）'
+            cat_obj = props.get('カテゴリ', {}).get('select')
+            cat = cat_obj['name'] if cat_obj else '-'
+            cp_obj = props.get('コンテンツ方針', {}).get('select')
+            cp = cp_obj['name'] if cp_obj else '-'
+            memo_arr = props.get('メモ', {}).get('メモ', props.get('メモ', {})).get('rich_text', []) if isinstance(props.get('メモ', {}), dict) and 'rich_text' in props.get('メモ', {}) else props.get('メモ', {}).get('rich_text', [])
+            memo = memo_arr[0]['plain_text'][:50] if memo_arr else ''
+            page_id = r.get('id', '')
+            print(f'  {i}. {title}')
+            print(f'     カテゴリ: {cat} | 方針: {cp}')
+            if memo:
+                print(f'     メモ: {memo}')
+            print(f'     ID: {page_id}')
+except Exception as e:
+    print(f'  ⚠️ パースエラー: {e}')
+" 2>/dev/null
+  else
+    echo "❌ Notion API: アイデア一覧の取得失敗"
+  fi
+else
+  echo "⚠️ NOTION_API_KEY 未設定（スキップ）"
+fi
+echo ""
+
 # 5. Gemini MCP接続テスト（簡易）
 echo "--- 5. Gemini API疎通テスト ---"
 GEMINI_KEY=$(grep '^GEMINI_API_KEY=' "$PROJECT_DIR/.env" | cut -d'=' -f2)
