@@ -7,7 +7,7 @@ credentials/
 *.pem
 *.key
 
-# 画像ファイル（Google Driveで管理）
+# 画像ファイル（ローカル保管）
 *.jpg
 *.jpeg
 *.png
@@ -36,5 +36,3 @@ wp-content/
 *.tmp
 .cache/
 
-# 移行指示書（一時ドキュメント）
-柴メディア_GitHub移行_全体指示.md
