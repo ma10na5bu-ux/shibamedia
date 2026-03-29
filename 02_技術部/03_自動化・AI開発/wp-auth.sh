@@ -3,19 +3,19 @@
 # .envから認証情報を読み込み、curlに渡す
 # 使い方: source wp-auth.sh && curl -u "$WP_AUTH" "https://shiba-with.com/wp-json/wp/v2/posts"
 
-# プロジェクトルートを特定（BASH_SOURCEが効かない環境向けにフォールバック）
-_SCRIPT_DIR=""
-if [ -n "${BASH_SOURCE[0]:-}" ] && [ -f "${BASH_SOURCE[0]}" ]; then
-  _SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# プロジェクトルートを特定（絶対パス優先、BASH_SOURCEはフォールバック）
+PROJECT_ROOT="/Users/ishiimanabu/Shibamedia株式会社"
+if [ ! -f "$PROJECT_ROOT/.env" ]; then
+  # 絶対パスで見つからない場合のみBASH_SOURCEから推定
+  _SCRIPT_DIR=""
+  if [ -n "${BASH_SOURCE[0]:-}" ] && [ -f "${BASH_SOURCE[0]}" ]; then
+    _SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  fi
+  if [ -n "$_SCRIPT_DIR" ]; then
+    PROJECT_ROOT="$(cd "$_SCRIPT_DIR/../.." && pwd)"
+  fi
+  unset _SCRIPT_DIR
 fi
-
-if [ -n "$_SCRIPT_DIR" ]; then
-  PROJECT_ROOT="$(cd "$_SCRIPT_DIR/../.." && pwd)"
-else
-  # フォールバック: 絶対パスで指定
-  PROJECT_ROOT="/Users/ishiimanabu/Shibamedia株式会社"
-fi
-unset _SCRIPT_DIR
 
 ENV_FILE="$PROJECT_ROOT/.env"
 

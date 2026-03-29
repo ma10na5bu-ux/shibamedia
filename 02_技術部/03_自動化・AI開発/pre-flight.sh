@@ -182,8 +182,16 @@ else
 fi
 echo ""
 
-# 5. Gemini MCP接続テスト（簡易）
-echo "--- 5. Gemini API疎通テスト ---"
+# 5. Notionネタ帳カテゴリ選択肢（ネタ追加時の参照用）
+echo "--- 5. Notionネタ帳カテゴリ選択肢 ---"
+echo "  カテゴリ: 柴犬の基本 / しつけ・育て方 / お散歩・お出かけ / グッズ・ごはん / 季節・イベント / コラム"
+echo "  ステータス: 💡 アイデア / ✅ 採用 / 📝 執筆中 / 🚀 公開済 / ❌ 不採用"
+echo "  コンテンツ方針: 🎭 エンタメ / 📖 体験ストーリー×情報 / 📚 情報"
+echo "  ⚠️ WPカテゴリ（柴犬あるある・柴犬ライフ等）はネタ帳では使用不可。内容に応じて上記6種から選ぶこと"
+echo ""
+
+# 6. Gemini MCP接続テスト（簡易）
+echo "--- 6. Gemini API疎通テスト ---"
 GEMINI_KEY=$(grep '^GEMINI_API_KEY=' "$PROJECT_DIR/.env" | cut -d'=' -f2)
 if [ -n "$GEMINI_KEY" ]; then
   GEMINI_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
